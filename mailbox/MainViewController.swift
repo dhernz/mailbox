@@ -29,14 +29,14 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         
         scrollView.contentSize = feedImageView.frame.size
         
-//        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector ((MainViewController.didSlideViewPan(_:))))
-//        
-//        
-//        
-//        
-//        leftSwipe.direction = .left
-//        
-//        view.addGestureRecognizer(leftSwipe)
+        //        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector ((MainViewController.didSlideViewPan(_:))))
+        //
+        //
+        //
+        //
+        //        leftSwipe.direction = .left
+        //
+        //        view.addGestureRecognizer(leftSwipe)
         
         
         checkImageView.alpha = 0
@@ -50,7 +50,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,8 +63,8 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         
         if sender.state == .began {
             
-            UIView.animate(withDuration: 0.2, animations: { 
-
+            UIView.animate(withDuration: 0.2, animations: {
+                
                 
             })
             
@@ -77,63 +77,99 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
             
             messageView.transform = CGAffineTransform(translationX: translation.x, y: 0)
             
-            if translation.x > 200 {
+            if translation.x > 260 {
                 superViewMessageBackground = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-            } else if translation.x > 50 {
+            } else if translation.x > 60 {
                 superViewMessageBackground = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-            } else if translation.x < -200 {
+            } else if translation.x < -260 {
                 superViewMessageBackground = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
-            }else if translation.x < -50 {
+            }else if translation.x < -60 {
                 superViewMessageBackground = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
             }
             
             
-            UIView.animate(withDuration: 0.2, animations: { 
+            UIView.animate(withDuration: 0.2, animations: {
                 self.superMessageView.backgroundColor = superViewMessageBackground
             })
             
             
             
             
-            if translation.x > 200 {
-                UIView.animate(withDuration: 0.3, animations: {
+            if translation.x > 260 {
+                UIView.animate(withDuration: 0.5, animations: {
                     self.checkImageView.alpha = 0
                     self.deleteImageView.alpha = 1
                     
                 })
             } else {
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                     
                     self.checkImageView.alpha = 1
-                    self.checkImageView.transform = CGAffineTransform(translationX: translation.x + -50, y: 0)
+                    self.checkImageView.transform = CGAffineTransform(translationX: translation.x + -60, y: 0)
                     self.deleteImageView.alpha = 0
                 })
             }
             
-            if translation.x < -200 {
-                UIView.animate(withDuration: 0.3, animations: {
+            if translation.x < -260 {
+                UIView.animate(withDuration: 0.5, animations: {
                     self.clockImageView.alpha = 0
                     self.listImageView.alpha = 1
                 })
             } else {
-                UIView.animate(withDuration: 0.3, animations: {
+                UIView.animate(withDuration: 0.5, animations: {
                     self.clockImageView.alpha = 1
-                    self.clockImageView.transform = CGAffineTransform(translationX: translation.x + 50, y: 0)
+                    self.clockImageView.transform = CGAffineTransform(translationX: translation.x + 60, y: 0)
                     self.listImageView.alpha = 0
                 })
             }
             
             
-
             
         } else if sender.state == .ended {
+            
+        
+            self.deleteImageView.alpha = 0
+            self.listImageView.alpha = 0
+            self.messageView.transform = CGAffineTransform.identity
+            
+            if translation.x < -280 {
+                
+                UIView.animate(withDuration: 0.8, animations: {
+                    
+                    self.deleteMessage()
+                    
+                    
+                })
+            
+            
+            
+            
             
         }
         
         
         
         
+        
+        
+        
+        
     }
+    
+    
+    
+    
+}
+
+
+
+func deleteMessage(){
+    self.superMessageView.isHidden = true
+    self.feedImageView.transform = self.feedImageView.transform.translatedBy(x: 0, y: -80)
+    
+    
+    
+}
 
 
 }

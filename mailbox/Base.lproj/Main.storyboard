@@ -38,10 +38,6 @@
                                         <frame key="frameInset" width="375" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="delete_icon" id="ic8-ns-IGm">
-                                        <frame key="frameInset" minX="175" minY="28" width="25" height="25"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                    </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="archive_icon" id="976-pj-332">
                                         <frame key="frameInset" minX="14" minY="29" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -51,7 +47,11 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="list_icon" id="VNU-dq-mWC">
-                                        <frame key="frameInset" minX="195" minY="29" width="25" height="25"/>
+                                        <frame key="frameInset" minX="109" minY="29" width="25" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="delete_icon" id="ic8-ns-IGm">
+                                        <frame key="frameInset" minX="235" minY="27" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </imageView>
                                 </subviews>

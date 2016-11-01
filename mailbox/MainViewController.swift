@@ -10,11 +10,24 @@ import UIKit
 
 class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var superMessageView: UIView!
     @IBOutlet weak var messageView: UIImageView!
+    @IBOutlet weak var feedImageView: UIImageView!
+    
+    @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet weak var deleteImageView: UIImageView!
+    @IBOutlet weak var clockImageView: UIImageView!
+    @IBOutlet weak var listImageView: UIImageView!
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        scrollView.contentSize = feedImageView.frame.size
         
 //        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector ((MainViewController.didSlideViewPan(_:))))
 //        
@@ -24,6 +37,13 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
 //        leftSwipe.direction = .left
 //        
 //        view.addGestureRecognizer(leftSwipe)
+        
+        
+        checkImageView.alpha = 0
+        deleteImageView.alpha = 0
+        clockImageView.alpha = 0
+        listImageView.alpha = 0
+        
         
         
         
@@ -74,6 +94,37 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
             
             
             
+            
+            if translation.x > 200 {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.checkImageView.alpha = 0
+                    self.deleteImageView.alpha = 1
+                    
+                })
+            } else {
+                UIView.animate(withDuration: 0.3, animations: {
+                    
+                    self.checkImageView.alpha = 1
+                    self.checkImageView.transform = CGAffineTransform(translationX: translation.x + -50, y: 0)
+                    self.deleteImageView.alpha = 0
+                })
+            }
+            
+            if translation.x < -200 {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.clockImageView.alpha = 0
+                    self.listImageView.alpha = 1
+                })
+            } else {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.clockImageView.alpha = 1
+                    self.clockImageView.transform = CGAffineTransform(translationX: translation.x + 50, y: 0)
+                    self.listImageView.alpha = 0
+                })
+            }
+            
+            
+
             
         } else if sender.state == .ended {
             

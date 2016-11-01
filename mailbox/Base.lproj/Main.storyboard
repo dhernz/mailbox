@@ -14,13 +14,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1650"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="nav" id="izq-sR-h8S">
-                                <frame key="frameInset" minX="1" width="375" height="74"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="help_label" id="RS9-IV-MoN">
                                 <frame key="frameInset" minY="114" width="375" height="43"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="nav" id="izq-sR-h8S">
+                                <frame key="frameInset" minX="1" width="375" height="74"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pjq-zf-YUU" appends="YES" id="NbY-XH-gNZ"/>
+                                </connections>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="search" id="pXi-Co-Veh">
                                 <frame key="frameInset" minX="1" minY="74" width="375" height="49"/>
@@ -67,6 +71,13 @@
                                 <frame key="frameInset" minY="239" width="375" height="1383"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8AR-4G-Vgq" userLabel="MenuButton">
+                                <frame key="frameInset" minX="16" minY="32" width="38" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="didPressMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O33-eY-HcS"/>
+                                </connections>
+                            </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="reschedule" id="XtQ-YB-ZpN">
                                 <frame key="frameInset" minX="-3" width="378" height="674"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -74,6 +85,10 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="9Iv-X9-gy6" appends="YES" id="sRV-7b-ZYT"/>
                                 </connections>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="menu" id="DaH-z3-PX3">
+                                <frame key="frameInset" width="377" height="670"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,6 +101,7 @@
                         <outlet property="deleteImageView" destination="ic8-ns-IGm" id="WYQ-yP-tM3"/>
                         <outlet property="feedImageView" destination="XcD-TI-BT9" id="M5d-t6-1Q5"/>
                         <outlet property="listImageView" destination="VNU-dq-mWC" id="DHb-Dj-BAA"/>
+                        <outlet property="menuImageView" destination="DaH-z3-PX3" id="xhQ-LA-6l1"/>
                         <outlet property="messageView" destination="Iaf-67-yMJ" id="9dA-rP-Rrl"/>
                         <outlet property="rescheduleImageView" destination="XtQ-YB-ZpN" id="Z0g-Gx-Yup"/>
                         <outlet property="scrollView" destination="lKd-dO-3vU" id="Kyv-VU-UI7"/>
@@ -103,6 +119,11 @@
                         <action selector="didTapReschedule:" destination="BYZ-38-t0r" id="yd5-aq-AG2"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="pjq-zf-YUU">
+                    <connections>
+                        <action selector="didTapShowMessage:" destination="BYZ-38-t0r" id="uzs-67-A9Y"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="85.5" y="154"/>
         </scene>
@@ -114,6 +135,7 @@
         <image name="help_label" width="320" height="37"/>
         <image name="later_icon" width="25" height="25"/>
         <image name="list_icon" width="25" height="25"/>
+        <image name="menu" width="320" height="568"/>
         <image name="message" width="320" height="86"/>
         <image name="nav" width="320" height="65"/>
         <image name="reschedule" width="320" height="568"/>

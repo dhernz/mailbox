@@ -14,13 +14,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
     @IBOutlet weak var superMessageView: UIView!
     @IBOutlet weak var messageView: UIImageView!
     @IBOutlet weak var feedImageView: UIImageView!
-    
     @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var deleteImageView: UIImageView!
     @IBOutlet weak var clockImageView: UIImageView!
     @IBOutlet weak var listImageView: UIImageView!
     @IBOutlet weak var rescheduleImageView: UIImageView!
-    
+    @IBOutlet weak var menuImageView: UIImageView!
     
     
     override func viewDidLoad() {
@@ -28,12 +27,12 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         
         
         scrollView.contentSize = feedImageView.frame.size
-
         checkImageView.alpha = 0
         deleteImageView.alpha = 0
         clockImageView.alpha = 0
         listImageView.alpha = 0
         rescheduleImageView.alpha = 0
+        menuImageView.alpha = 0
 
         
     }
@@ -134,25 +133,78 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         
        self.rescheduleImageView.alpha = 0
         
-        UIView.animate(withDuration: 1, animations: {
+        UIView.animate(withDuration: 0.6, animations: {
             
             self.deleteMessage()
             
+        })
+        
+    }
+    
+    
+    @IBAction func didTapShowMessage(_ sender: AnyObject) {
+        
+        UIView.animate(withDuration: 0.6, animations: {
+            
+            self.showMessage()
             
         })
         
-        
-        
     }
+
+ 
+//    @IBAction func didPressMenu(_ sender: AnyObject) {
+//        
+//        let translation = sender.translation(in: view)
+//        scrollView.transform = CGAffineTransform(translationX: translation.x, y: 0)
+//        
+//        if sender.state == .began {
+//            
+//            UIView.animate(withDuration: 0.2, animations: {
+//                
+//                
+//            })
+//            
+//            
+//        } else if sender.state == .changed {
+//            
+//            UIView.animate(withDuration: 0.1, animations: {
+//                
+//                self.menuImageView.alpha = 1
+//                
+//            })
+//
+//            
+//        } else if sender.state == .ended {
+//            
+//            self.menuImageView.alpha = 0
+//        }
+//        
+//        
+//        
+//    }
+    
 
     
 func deleteMessage(){
     self.superMessageView.isHidden = true
     self.feedImageView.transform = self.feedImageView.transform.translatedBy(x: 0, y: -80)
     
-    
-    
 }
+
+    
+    
+func showMessage(){
+        self.superMessageView.isHidden = false
+        self.feedImageView.transform = self.feedImageView.transform.translatedBy(x: 0, y: 80)
+        
+    }
+    
+    
+    
+    
+    
+    
 
 
 }

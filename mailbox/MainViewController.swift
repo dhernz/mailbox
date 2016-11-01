@@ -19,7 +19,7 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
     @IBOutlet weak var deleteImageView: UIImageView!
     @IBOutlet weak var clockImageView: UIImageView!
     @IBOutlet weak var listImageView: UIImageView!
-    
+    @IBOutlet weak var rescheduleImageView: UIImageView!
     
     
     
@@ -28,26 +28,13 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
         
         
         scrollView.contentSize = feedImageView.frame.size
-        
-        //        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector ((MainViewController.didSlideViewPan(_:))))
-        //
-        //
-        //
-        //
-        //        leftSwipe.direction = .left
-        //
-        //        view.addGestureRecognizer(leftSwipe)
-        
-        
+
         checkImageView.alpha = 0
         deleteImageView.alpha = 0
         clockImageView.alpha = 0
         listImageView.alpha = 0
-        
-        
-        
-        
-        
+        rescheduleImageView.alpha = 0
+
         
     }
     
@@ -133,36 +120,32 @@ class MainViewController: UIViewController, UIScrollViewDelegate, UIGestureRecog
             self.messageView.transform = CGAffineTransform.identity
             
             if translation.x < -280 {
-                
-                UIView.animate(withDuration: 0.8, animations: {
-                    
-                    self.deleteMessage()
-                    
-                    
-                })
-            
-            
-            
-            
-            
+     
+                    self.rescheduleImageView.alpha = 1
+
         }
         
+    }
+}
+
+    
+    
+    @IBAction func didTapReschedule(_ sender: AnyObject) {
         
+       self.rescheduleImageView.alpha = 0
         
-        
-        
+        UIView.animate(withDuration: 1, animations: {
+            
+            self.deleteMessage()
+            
+            
+        })
         
         
         
     }
-    
-    
-    
-    
-}
 
-
-
+    
 func deleteMessage(){
     self.superMessageView.isHidden = true
     self.feedImageView.transform = self.feedImageView.transform.translatedBy(x: 0, y: -80)
